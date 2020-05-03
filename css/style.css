@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai+2&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: black;
+  color: #ffffff;
+  font-family: 'Baloo Bhai 2', cursive;
+  font-size: 20px;
+  background-image: url(img/bg_uwu.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+.site {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  border: solid 5px blue;
+  background-color: rgba(148, 0, 211, 0.7);
+}
+.container {
+  width: calc(100% /4);
+  border: 1px white solid;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  margin: 0 auto;
+}
+.calcular{
+  color: white;
+  border-radius: 20px;
+  border: solid white 1px;
+  background-color: rgba(148, 0, 211, 0.5);
+  padding: 4px;
+}
+.number_area{
+  width: calc(100% /3);
+}
+.indice p{
+  text-align: center;
+}
+.mascote p{
+  text-transform: capitalize;
+}
+span{
+  text-align: center;
+}

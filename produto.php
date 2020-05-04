@@ -1,4 +1,10 @@
-<?php include 'functions.php'; ?>
+<?php
+ include('functions.php');
+ session_start();
+ if (!$_SESSION) {
+ header('location: login.php');
+ }
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -29,8 +35,8 @@
               exit;
             }
             if (move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name'])) {
-            echo "arquivo salvo";
-          }} else {
+            echo "arquivo salvo";}
+          } else {
             echo "Erro ao enviar arquivo";
           }
             ?>

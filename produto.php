@@ -17,7 +17,6 @@
       <div class="container">
         <form class="" action="functions.php" method="post" enctype="multipart/form-data">
         <label for="nome">Nome do produto</label><br>
-        <?php  ?>
         <input type="text" name="nome_pdt" placeholder="nome do produto"><br>
         <label for="descricao">Descrição do produto</label><br>
         <input type="text" name="descricao" placeholder="descrição produto"><br>
@@ -27,18 +26,34 @@
         <input type="file" name="foto">
         <button type="submit" name="button">Enviar</button>
         </form>
+        <a href="logout.php">Logout</a>
           <?php
-          $valid=["image/jpeg","image/png","image/jpg"];
-          if ($_FILES['foto']['error']==0) {
-            if (array_search($_FILES['foto']['type'], $valid) === false ) {
-              echo "Extenção inválida";
-              exit;
-            }
-            if (move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name'])) {
-            echo "arquivo salvo";}
-          } else {
-            echo "Erro ao enviar arquivo";
+          if ($_FILES) {
+            $foto = $_FILES['foto'];
           }
+          if($_POST){
+              $email = $_POST['email'];
+              $nome = $_POST['nome'];
+              $senha = $_POST['senha'];
+              $verify = $_POST['verify'];
+
+              $emailOk = true;
+              $nomeOk = true;
+              $senhaOk = true;
+
+              if(empty($_POST['nome'])){
+                  $nomeOk = false;
+              }
+              if(strlen($senha) < 5 or $senha != $verify){
+                  $senhaOk = false;
+              }
+              if($nomeOk and $senhaOk and $emailOk){
+                    upload_foto($foto);
+                  $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
+                  add_user($nome,$email,$encrypt_senha);
+                  header('location: login.php');
+              }
+          } //fechamendo if ($_POST)
             ?>
        </div>
      </div>

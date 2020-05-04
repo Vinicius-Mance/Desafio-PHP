@@ -11,4 +11,5 @@
 <body>
 <a href="upload.php">Upload de produtos</a>
 <a href="produto.php">Visualisação de produtos</a>
+<a href="logout.php">Logout</a>
 </body>

@@ -40,13 +40,13 @@ if($_POST){
   if (empty($nome_pdt) == false){
     $nome_pdtOK = true;
   }
-  if ($preco > 0){
+  if ($preco > 0 and is_numeric($preco)){
     $precoOK = true;
   }
   if (empty($foto) == false){
     $fotoOK = true;
   }
-  if ($nome_pdtOK and $precoOK and $fotoOK) {
+  if ($nome_pdtOK and $precoOK and $fotoOK){
       upload_img($foto);
   }
 }

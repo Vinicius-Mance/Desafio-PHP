@@ -11,9 +11,8 @@
           $_SESSION['email'] = $user['email'];
           $_SESSION['nome'] = $user['nome'];
           header('location: list-user.php');
-        }
+        } else {$loginOk = false;}
     }
-    $loginOk = false;
 }
 ?>
 <!DOCTYPE html>
@@ -31,8 +30,8 @@
           <input type="email" name="email" placeholder="nome@gmail.com"><br>
         <label for="senha">Digite sua senha</label><br>
           <input type="password" name="senha" placeholder="senha123"><br>
+        <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
         <button type="submit" name="button">Enviar</button><br>
-        <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>');  ?>
         </form>
         <p>Não tem uma conta ainda? <a href="registrar.php">Cadastre-se</a></p>
        </div>

@@ -29,11 +29,27 @@ include('functions.php')
 <a href="logout.php">Logout</a>
 <?php
 if($_POST){
-if ($_FILES) {
+  $nome_pdt = $_POST['nome_pdt'];
+  $descricao = $_POST['descricao'];
+  $preco = $_POST['preco'];
   $foto = $_FILES['foto'];
-  upload_img($foto);
+
+  $nome_pdtOK = false;
+  $precoOK = false;
+  $fotoOK = false;
+  if (empty($nome_pdt) == false){
+    $nome_pdtOK = true;
   }
-} else{die();}
+  if ($preco > 0){
+    $precoOK = true;
+  }
+  if (empty($foto) == false){
+    $fotoOK = true;
+  }
+  if ($nome_pdtOK and $precoOK and $fotoOK) {
+      upload_img($foto);
+  }
+}
 
 ?>
       </div>

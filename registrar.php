@@ -1,6 +1,5 @@
 <?php
 include('functions.php');
-
 if($_POST){
     $email = $_POST['email'];
     $nome = $_POST['nome'];
@@ -23,7 +22,7 @@ if($_POST){
         $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
         add_user($nome,$email,$encrypt_senha);
         header('location: login.php');
-    } else {}
+    } 
 } //fechamendo if ($_POST)
 ?>
 <!DOCTYPE html>
@@ -48,7 +47,7 @@ if($_POST){
         <button type="submit" name="button">Enviar</button>
         </form>
         <p>Já tem uma conta? Faça seu <a href="Login.php">Login</a></p>
-       </div>
+        </div>
      </div>
   </body>
 </html>

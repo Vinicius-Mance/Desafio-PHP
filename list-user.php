@@ -11,5 +11,7 @@
 <body>
 <a href="upload.php">Upload de produtos</a>
 <a href="produto.php">Visualisação de produtos</a>
+<a href="login.php">Login</a>
 <a href="logout.php">Logout</a>
+<a href="registrar.php">cadastro</a>
 </body>

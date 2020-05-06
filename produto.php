@@ -16,8 +16,8 @@
     <div class="site">
       <div class="container">
         <form class="" action="functions.php" method="post" enctype="multipart/form-data">
-        <label for="nome">Nome do produto</label><br>
-        <input type="text" name="nome_pdt" placeholder="nome do produto"><br>
+        <label for="pdt">Nome do produto</label><br>
+        <input type="text" name="pdt" placeholder="nome do produto"><br>
         <label for="descricao">Descrição do produto</label><br>
         <input type="text" name="descricao" placeholder="descrição produto"><br>
         <label for="preco">Preço do produto</label><br>

@@ -11,9 +11,9 @@ function upload_img($img){
   $valid=["image/jpeg","image/png","image/jpg"];
   if ($img['error']==0){
     if (array_search($img['type'], $valid) === false ){exit;}
-    // if (move_uploaded_file($img['tmp_name'], 'img/'.$img['name'])){}
     else {
     move_uploaded_file($img['tmp_name'], 'img/'.$img['name']);
+    return 'img/'.$img['name'];
     }
   }
 }
@@ -25,5 +25,19 @@ function upload_img($img){
       $usuarios[]= $user;
       $data = json_encode($usuarios);
       if($data){file_put_contents('user.json', $data);}
+  }
+
+  function fetch_pdt(){
+      $data = file_get_contents("data.json");
+      $pdt = json_decode($data, true);
+      return $pdt;
+  }
+
+  function add_pdt($pdt, $preco, $foto,$descricao=''){
+      $produtos = fetch_pdt();
+      $product = ['produto'=>$pdt,'preco'=>$preco,'foto'=>$foto,'descricao'=>$descricao];
+      $produtos[]= $product;
+      $data = json_encode($produtos);
+      if($data){file_put_contents('data.json', $data);}
   }
  ?>

@@ -35,7 +35,12 @@ function upload_img($img){
 
   function add_pdt($pdt, $preco, $foto,$descricao=''){
       $produtos = fetch_pdt();
-      $product = ['produto'=>$pdt,'preco'=>$preco,'foto'=>$foto,'descricao'=>$descricao];
+      if(empty($produtos)){
+        $id = 1;
+      } else {
+      $id = sizeof($produtos) + 1;
+      }
+      $product = ['id'=>$id,'produto'=>$pdt,'preco'=>$preco,'foto'=>$foto,'descricao'=>$descricao];
       $produtos[]= $product;
       $data = json_encode($produtos);
       if($data){file_put_contents('data.json', $data);}

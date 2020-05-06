@@ -16,17 +16,28 @@
     <div class="site">
       <div class="container">
         <?php
+        if ($_POST['delete']) {
         $produto = call_pdt($_GET['id']);
         if ($produto) {
-        if ($_GET) {
-        if ($_GET['delete'] == $produto['produto']) {
+        if ($_POST['delete'] == $produto['produto']) {
         $files = fetch_pdt();
-        $teste = strpos($files,$_GET['id']);
-        echo $teste;
+        foreach($files as $item => $info) {
+            if($info['id'] == $_GET['id']) {
+                unset($files[$item]);
+                array_values($files);
+                $data = json_encode($files);
+                file_put_contents('data.json', $data);
+                echo "<pre>";
+                var_dump($data);
+                echo "<pre>";
+                break; 
+                  }
+                }
+              }
             }
           }
-        }
-        //  header('location: produto.php'); ?>
+        header('location: produto.php');
+       ?>
        </div>
      </div>
   </body>

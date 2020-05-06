@@ -1,13 +1,17 @@
 <?php
     include("functions.php");
-        $loginOk = true;
+    session_start();
+    if ($_SESSION) {
+    header('location: list-user.php');
+    }
+
+$loginOk = true;
     if($_POST){
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         $usuarios = fetch_user();
         foreach($usuarios as $user){
         if($user['email'] == $email and $user['senha'] == password_verify($senha,$user['senha'])){
-          session_start();
           $_SESSION['email'] = $user['email'];
           $_SESSION['nome'] = $user['nome'];
           header('location: list-user.php');

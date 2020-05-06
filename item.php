@@ -17,6 +17,7 @@
       <div class="container">
         <?php
         $produto = call_pdt($_GET['id']);
+        // $_POST['id'] = $_GET['id'];
         ?>
         <?php if ($produto): ?>
         <article>
@@ -24,7 +25,7 @@
             <p> Preço: <?php echo $produto['preco']; ?></p>
             <span><?php echo $produto['descricao']; ?></span>
             <img src="<?php echo $produto['foto'] ?>" alt="">
-            <form action="delete.php?id=<?php echo $_GET['id'];?>" method="get">
+            <form action="delete.php?id=<?php echo $_GET['id'];?>" method="post">
               <label for="delete">Para apagar, escreva o nome do produto como escrito</label>
               <input type="text" name="delete">
             <button type="submit">Apagar produto</button>

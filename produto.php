@@ -15,7 +15,21 @@
   <body>
     <div class="site">
       <div class="container">
-        
+        <?php
+        $produtos = fetch_pdt(); ?>
+        <?php if ($produtos): ?>
+        <?php foreach($produtos as $item):
+          $_GET['id'] = $item['id'];?>
+        <article>
+          <span> Produto: <?php echo $item['produto']; ?> </span>
+            <p> Preço: <?php echo $item['preco']; ?></p>
+            <span><?php echo $item['descricao']; ?></span>
+              <a href="item.php?id=<?php echo $_GET['id'];?>">Ver mais</a>
+        </article>
+        <?php endforeach;?>
+        <?php else: echo'<h1>Não há nenhum produto salvo.
+        <a href="upload.php"> Coloque um agora!</a> </h1>';
+          endif;?>
        </div>
      </div>
   </body>

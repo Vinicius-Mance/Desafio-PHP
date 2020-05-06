@@ -54,6 +54,7 @@ if($_POST or $_FILES){
     <button type="reset" name="button">Reset</button>
   </form>
 <a href="logout.php">Logout</a>
+<a href="produto.php">Visualisação de produtos</a>
       </div>
     </div>
   </body>

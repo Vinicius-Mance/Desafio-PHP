@@ -1,5 +1,10 @@
 <?php
 include('functions.php');
+session_start();
+if (!$_SESSION) {
+header('location: login.php');
+}
+
 if($_POST){
     $email = $_POST['email'];
     $nome = $_POST['nome'];
@@ -22,7 +27,7 @@ if($_POST){
         $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
         add_user($nome,$email,$encrypt_senha);
         header('location: login.php');
-    } 
+    } else {}
 } //fechamendo if ($_POST)
 ?>
 <!DOCTYPE html>
@@ -48,6 +53,16 @@ if($_POST){
         </form>
         <p>Já tem uma conta? Faça seu <a href="Login.php">Login</a></p>
         </div>
+        <div class="container">
+        <?php $usuarios = fetch_user();
+           foreach($usuarios as $user):?>
+      		<article>
+            <span> Usuário: <?php echo $user['nome']; ?> </span>
+              <p> E-mail: <?php echo $user['email']; ?></p>
+                <a href="alterar_user.php">Modificar usuário</a>
+      		</article>
+      		<?php endforeach;?>
+       </div>
      </div>
   </body>
 </html>

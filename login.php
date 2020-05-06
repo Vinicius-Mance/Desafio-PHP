@@ -30,10 +30,11 @@
           <input type="email" name="email" placeholder="nome@gmail.com"><br>
         <label for="senha">Digite sua senha</label><br>
           <input type="password" name="senha" placeholder="senha123"><br>
-        <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'');  ?>
+        <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
         <button type="submit" name="button">Enviar</button><br>
         </form>
-        <p>Não tem uma conta ainda? <a href="registrar.php">Cadastre-se</a></p>
+        <p>Caso não seja registrado, ou não consegue logar, peça a um
+        <a href="https://github.com/Vinicius-Mance" target="_blank">Moderador</a></p>
        </div>
      </div>
   </body>

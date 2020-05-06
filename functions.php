@@ -17,7 +17,6 @@ function upload_img($img){
     }
   }
 }
-
 //adicionar usuário
   function add_user($nome, $email, $senha){
       $usuarios = fetch_user();
@@ -30,6 +29,9 @@ function upload_img($img){
   function fetch_pdt(){
       $data = file_get_contents("data.json");
       $pdt = json_decode($data, true);
+      if (empty($pdt)) {
+        return false;
+      }
       return $pdt;
   }
 
@@ -44,5 +46,15 @@ function upload_img($img){
       $produtos[]= $product;
       $data = json_encode($produtos);
       if($data){file_put_contents('data.json', $data);}
+  }
+
+  function call_pdt($id){
+      $produtos = fetch_pdt();
+      foreach ($produtos as $item) {
+          if($item['id'] == $id){
+              return $item;
+          }
+      }
+      return false;
   }
  ?>

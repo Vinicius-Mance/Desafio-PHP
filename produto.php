@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="site">
+    <?php include('header.php');?>
       <div class="container">
         <?php
         $produtos = fetch_pdt(); ?>

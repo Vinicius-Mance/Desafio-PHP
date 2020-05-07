@@ -27,7 +27,7 @@ if($_POST){
         $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
         add_user($nome,$email,$encrypt_senha);
         header('location: login.php');
-    } else {}
+    }
 } //fechamendo if ($_POST)
 ?>
 <!DOCTYPE html>
@@ -39,6 +39,7 @@ if($_POST){
   </head>
   <body>
     <div class="site">
+<?php include('header.php');?>
       <div class="container">
         <form class="" action="registrar.php" method="post">
         <label for="email">Digite seu email</label><br>
@@ -51,7 +52,6 @@ if($_POST){
           <input type="password" name="verify"><br>
         <button type="submit" name="button">Enviar</button>
         </form>
-        <p>Já tem uma conta? Faça seu <a href="Login.php">Login</a></p>
         </div>
         <div class="container">
         <?php $usuarios = fetch_user();

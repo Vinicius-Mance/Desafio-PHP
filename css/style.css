@@ -27,24 +27,10 @@ body {
   border: 1px white solid;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 5px;
+  height: 100vh;
   margin: 0 auto;
 }
-.calcular{
-  color: white;
-  border-radius: 20px;
-  border: solid white 1px;
-  background-color: rgba(148, 0, 211, 0.5);
-  padding: 4px;
-}
-.number_area{
-  width: calc(100% /3);
-}
-.indice p{
-  text-align: center;
-}
-.mascote p{
-  text-transform: capitalize;
-}
+
 span{
   text-align: center;
 }
@@ -53,4 +39,8 @@ color: red;
 }
 img{
 max-width: 100%;
+}
+a{
+color: white;
+text-decoration: none;
 }

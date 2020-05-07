@@ -24,7 +24,7 @@ if($_POST or $_FILES){
       move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
       $foto = 'img/'.$foto['name'];
         add_pdt($pdt, $preco, $foto,$descricao);
-        header('location: ');
+        header('location: produto.php');
     }
 }
  ?>
@@ -37,6 +37,7 @@ if($_POST or $_FILES){
 </head>
 <body>
 <div class="site">
+<?php include('header.php');?>
 <div class="container">
   <form action="" method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>

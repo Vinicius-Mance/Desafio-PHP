@@ -2,7 +2,7 @@
     include("functions.php");
     session_start();
     if ($_SESSION) {
-    header('location: list-user.php');
+    header('location: produto.php');
     }
 
 $loginOk = true;
@@ -14,7 +14,7 @@ $loginOk = true;
         if($user['email'] == $email and $user['senha'] == password_verify($senha,$user['senha'])){
           $_SESSION['email'] = $user['email'];
           $_SESSION['nome'] = $user['nome'];
-          header('location: list-user.php');
+          header('location: registrar.php');
         } else {$loginOk = false;}
     }
 }

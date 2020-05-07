@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="site">
+      <?php include('header.php');?>
       <div class="container">
         <?php
         $produto = call_pdt($_GET['id']);
@@ -27,7 +28,6 @@
               <label for="delete">Para apagar, escreva o nome do produto como escrito</label>
               <input type="text" name="delete">
             <button type="submit">Apagar produto</button>
-            <?php echo $produto['foto'];?>
             </form>
             <a href="editar.php"></a>
         </article>

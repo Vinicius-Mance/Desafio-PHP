@@ -20,7 +20,8 @@
         $produto = call_pdt($_GET['id']);
         if ($produto) {
         if ($_POST['delete'] == $produto['produto']) {
-        $files = fetch_pdt();
+          unlink($produto['foto']);
+          $files = fetch_pdt();
         foreach($files as $item => $info) {
             if($info['id'] == $_GET['id']) {
                 unset($files[$item]);
@@ -30,7 +31,7 @@
                 echo "<pre>";
                 var_dump($data);
                 echo "<pre>";
-                break; 
+                break;
                   }
                 }
               }

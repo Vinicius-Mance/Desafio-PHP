@@ -1,7 +1,7 @@
 <?php
 //códigos de registro
   function fetch_user(){
-      $data = file_get_contents("user.json");
+      $data = file_get_contents("user.json", true);
       $usuarios = json_decode($data, true);
       return $usuarios;
   }
@@ -20,14 +20,19 @@ function upload_img($img){
 //adicionar usuário
   function add_user($nome, $email, $senha){
       $usuarios = fetch_user();
-      $user = ['nome'=>$nome, 'email'=>$email,'senha'=>$senha];
-      $usuarios[]= $user;
+      if(empty($usuarios)){
+        $id = 1;
+      } else {
+        $id = sizeof($usuarios) + 1;
+      }
+      $usuario = ['user'=>$id, 'nome'=>$nome, 'email'=>$email,'senha'=>$senha];
+      $usuarios[]= $usuario;
       $data = json_encode($usuarios);
       if($data){file_put_contents('user.json', $data);}
   }
 
   function fetch_pdt(){
-      $data = file_get_contents("data.json");
+      $data = file_get_contents("data.json", true);
       $pdt = json_decode($data, true);
       if (empty($pdt)) {
         return false;
@@ -53,6 +58,16 @@ function upload_img($img){
       foreach ($produtos as $item) {
           if($item['id'] == $id){
               return $item;
+          }
+      }
+      return false;
+  }
+
+  function call_user($id){
+      $usuario = fetch_user();
+      foreach ($usuario as $user) {
+          if($user['user'] == $id){
+              return $user;
           }
       }
       return false;

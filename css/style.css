@@ -44,3 +44,6 @@ a{
 color: white;
 text-decoration: none;
 }
+article{
+border-bottom: 1px white solid;
+}

@@ -29,10 +29,9 @@
               <input type="text" name="delete">
             <button type="submit">Apagar produto</button>
             </form>
-            <a href="editar.php"></a>
+            <a href="edit_pdt.php?id=<?php echo $_GET['id'];?>">Editar</a>
         </article>
-        <?php else: echo'<h1>Não há nenhum produto salvo. <a href="upload.php"> Coloque um agora!</a> </h1>';
-          endif;?>
+        <?php endif;?>
        </div>
      </div>
   </body>

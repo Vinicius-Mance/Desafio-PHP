@@ -29,7 +29,7 @@
         </article>
         <?php endforeach;?>
         <?php else: echo'<h1>Não há nenhum produto salvo.
-        <a href="upload.php"> Coloque um agora!</a> </h1>';
+        <a href="upload.php">Coloque um aqui</a> </h1>';
           endif;?>
        </div>
      </div>

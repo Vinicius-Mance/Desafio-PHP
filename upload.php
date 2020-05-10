@@ -1,5 +1,5 @@
 <?php
-include('functions.php');
+include('includes/functions.php');
 session_start();
 if (!$_SESSION) {
 header('location: login.php');
@@ -41,7 +41,7 @@ if($_POST or $_FILES){
 </head>
 <body>
 <div class="site">
-<?php include('header.php');?>
+<?php include('includes/header.php');?>
 <div class="container">
   <form action="" method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>

@@ -1,5 +1,5 @@
 <?php
-    include("functions.php");
+    include("includes/functions.php");
     session_start();
     if ($_SESSION) {
     header('location: produto.php');

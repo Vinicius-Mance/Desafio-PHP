@@ -1,5 +1,5 @@
 <?php
-include('functions.php');
+include('includes/functions.php');
 session_start();
 if (!$_SESSION) {
 header('location: login.php');
@@ -21,7 +21,7 @@ if ($produto) {
       array_values($new_file);
       $files[]= $new_file;
       $data = json_encode($files);
-      file_put_contents('data.json', $data);
+      file_put_contents('dados/data.json', $data);
       header("location: edit_pdt.php?id=".$_GET['id']);
       break;
       }
@@ -38,7 +38,7 @@ if ($produto) {
 </head>
 <body>
 <div class="site">
-<?php include('header.php');?>
+<?php include('includes/header.php');?>
 <div class="container">
   <form method="post" enctype="multipart/form-data">
     <label for="pdt">Nome</label><br>

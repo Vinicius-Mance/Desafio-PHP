@@ -1,5 +1,5 @@
 <?php
-include('functions.php');
+include('includes/functions.php');
 session_start();
 if (!$_SESSION) {
 header('location: login.php');
@@ -38,7 +38,7 @@ if($_POST){
   </head>
   <body>
     <div class="site">
-<?php include('header.php');?>
+<?php include('includes/header.php');?>
       <div class="container">
         <form action="registrar.php" method="post">
         <label for="email">Digite seu email</label><br>

@@ -1,5 +1,5 @@
 <?php
- include('functions.php');
+ include('includes/functions.php');
  session_start();
  if (!$_SESSION) {
  header('location: login.php');
@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="site">
-      <?php include('header.php');?>
+      <?php include('includes/header.php');?>
       <div class="container">
         <?php
         $produto = call_pdt($_GET['id']);

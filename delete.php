@@ -34,7 +34,7 @@ if ($_GET['user']) {
         unset($files[$item]);
         array_values($files);
         $data = json_encode($files);
-        file_put_contents('user.json', $data);
+        file_put_contents('dados/user.json', $data);
         break;
         }
       }
@@ -53,7 +53,7 @@ if ($_POST['user']) {
         unset($files[$item]);
         array_values($files);
         $data = json_encode($files);
-        file_put_contents('data.json', $data);
+        file_put_contents('dados/data.json', $data);
         break;
         }
       }

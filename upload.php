@@ -12,7 +12,6 @@ header('location: login.php');
     $pdt = '';
     $descricao = '';
     $preco = '';
-
 if($_POST or $_FILES){
   $pdt = $_POST['pdt'];
   $descricao = $_POST['descricao'];

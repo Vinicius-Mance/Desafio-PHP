@@ -9,7 +9,7 @@ if ($_POST['delete']) {
   $produto = call_pdt($_GET['id']);
   if ($produto) {
     if ($_POST['delete'] == $produto['produto']) {
-    unlink('../'.$produto['foto']);
+    unlink($produto['foto']);
     $files = fetch_pdt();
       foreach($files as $item => $info) {
         if($info['id'] == $_GET['id']) {
@@ -22,6 +22,8 @@ if ($_POST['delete']) {
       }
     }
   }
+header('location: produto.php');
+} else {
 header('location: produto.php');
 }
 

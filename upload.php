@@ -8,6 +8,11 @@ header('location: login.php');
     $precoOK = true;
     $fotoOK = true;
     $enviarOK = true;
+
+    $pdt = '';
+    $descricao = '';
+    $preco = '';
+
 if($_POST or $_FILES){
   $pdt = $_POST['pdt'];
   $descricao = $_POST['descricao'];
@@ -45,12 +50,12 @@ if($_POST or $_FILES){
 <div class="container">
   <form action="" method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>
-      <input type="text" name="pdt"><br>
+      <input type="text" name="pdt" value="<?php echo $pdt; ?>"><br>
         <?php echo ($pdtOK ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');?>
     <label for="descricao">Descrição do produto</label><br>
-      <input type="text" name="descricao"><br>
+      <input type="text" name="descricao" value="<?php echo $descricao; ?>"><br>
     <label for="preco">Preço do Produto</label><br>
-      <input type="number" name="preco"><br>
+      <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
         <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
     <label for="foto">Foto</label><br>
       <input type="file" name="foto"><br>

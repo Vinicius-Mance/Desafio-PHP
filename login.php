@@ -6,6 +6,7 @@
     }
 
 $loginOk = true;
+  $email= '';
     if($_POST){
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -31,7 +32,7 @@ $loginOk = true;
       <div class="container">
         <form class="" method="post">
         <label for="email">Digite seu email</label><br>
-          <input type="email" name="email" placeholder="nome@gmail.com"><br>
+          <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
         <label for="senha">Digite sua senha</label><br>
           <input type="password" name="senha" placeholder="senha123"><br>
         <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>

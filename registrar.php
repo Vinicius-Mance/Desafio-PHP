@@ -7,6 +7,8 @@ header('location: login.php');
     $nomeOk = true;
     $emailOk = true;
     $senhaOk = true;
+    $email = '';
+    $nome = '';
 if($_POST){
 
     $email = $_POST['email'];
@@ -42,10 +44,10 @@ if($_POST){
       <div class="container">
         <form action="registrar.php" method="post">
         <label for="email">Digite seu email</label><br>
-          <input type="email" name="email"><br>
+          <input type="email" name="email" value="<?php echo $email; ?>"><br>
           <?= ($emailOk ? '' : '<span class="erro">Email inválido</span>'.'<br>');  ?>
         <label for="nome">Digite seu nome</label><br>
-          <input type="text" name="nome"><br>
+          <input type="text" name="nome" value="<?php echo $nome; ?>"><br>
           <?= ($nomeOk ? '' : '<span class="erro">Preencha com um nome</span>'.'<br>');  ?>
         <label for="senha">Digite sua senha</label><br>
           <input type="password" name="senha"><br>

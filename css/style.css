@@ -27,7 +27,7 @@ body {
   border: 1px white solid;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 5px;
-  height: 100vh;
+  height: auto;
   margin: 0 auto;
 }
 

@@ -6,11 +6,30 @@ header('location: login.php');
 }
 $produto = call_pdt($_GET['id']);
 foreach($produto as $pdt){}
-if ($_POST) {
+if ($_POST or $_FILES) {
   $pdt = $_POST['pdt'];
   $preco = $_POST['preco'];
   $descricao = $_POST['descricao'];
-  $foto = $produto['foto'];
+  $foto = $_FILES['foto'];
+  if (empty($_POST['pdt'])) {
+      $pdt = $produto['produto'];
+  }
+  if (empty($_POST['preco'])) {
+    $preco = $produto['preco'];
+  }
+  if ($foto['error']==0){
+    $valid=["image/jpeg","image/png","image/jpg"];
+    if (array_search($foto['type'], $valid) === false){
+    exit;}
+    else {
+    unlink($produto['foto']);
+    $foto = $_FILES['foto'];
+    move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
+    $foto = 'img/'.$foto['name'];
+    }
+  } else {
+    $foto = $produto['foto'];
+  }
 if ($produto) {
     $files = fetch_pdt();
     foreach($files as $item => $info) {
@@ -28,6 +47,7 @@ if ($produto) {
     }
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html>

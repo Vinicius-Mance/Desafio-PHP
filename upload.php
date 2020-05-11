@@ -32,6 +32,7 @@ if($_POST or $_FILES){
       move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
       $foto = 'img/'.$foto['name'];
         add_pdt($pdt, $preco, $foto,$descricao);
+        header('location: upload.php');
     }
 }
  ?>

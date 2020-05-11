@@ -40,12 +40,14 @@ if($_POST or $_FILES){
 <html>
 <head>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/item.css">
   <meta charset="utf-8">
   <title>Upload de produtos</title>
 </head>
 <body>
 <div class="site">
 <?php include('includes/header.php');?>
+<div class="content">
 <div class="container">
   <form method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>
@@ -56,22 +58,23 @@ if($_POST or $_FILES){
     <label for="preco">Preço do Produto</label><br>
       <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
         <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
-    <label for="foto">Foto</label><br>
-      <input type="file" name="foto" id="foto"><br>
+    <label for="foto">Foto do produto</label><br>
+      <input type="file" name="foto" id="foto-upload"><br>
       <?php  echo ($fotoOK ? '' : '<span class="erro">Envie uma imagem</span>'.'<br>');?>
-    <img src="css/img/placeholder.png" id="foto-carregada">
     <button type="submit" name="button">Enviar</button>
     <button type="reset" name="button">Reset</button>
   </form>
+      </div>
+      <div>
   <script>
-      document.getElementById("foto").onchange = (evt) => {
+      document.getElementById("foto-upload").onchange = (evt) => {
           const reader = new FileReader();
           reader.onload = function (e) {
-              document.getElementById("foto-carregada").src = e.target.result;
-          };
-          reader.readAsDataURL(evt.target.files[0]);
-      };
+          document.getElementById("foto-load").src = e.target.result;};
+          reader.readAsDataURL(evt.target.files[0]);};
   </script>
+    <img src="css/img/placeholder.png" id="foto-load">
+        </div>
       </div>
     </div>
   </body>

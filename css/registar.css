@@ -1,22 +1,16 @@
+
 .registar{
   width: 25%;
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 90vh;
-  padding: 5px;
-  margin: auto;
-  font-size: 1.6rem;
 }
+
 .user_info{
-  width: 60%;
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 90vh;
-  padding: 5px;
-  margin: auto;
-  font-size: 1.6rem;
+  min-width: 60%;
   display: flex;
   flex-flow: column wrap;
 }
+
 .user{
-width: 50%;
-margin: 5px;
+width: auto;
+height: auto;
+margin: 5px 0;
 }

@@ -24,7 +24,7 @@ if ($_POST['delete']) {
   }
 header('location: produto.php');
 } else {
-header('location: produto.php');
+header('location: item.php?id='.$_GET['id']);
 }
 
 if ($_GET['user']) {

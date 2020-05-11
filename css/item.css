@@ -17,11 +17,41 @@ padding: 0 5%;
 }
 
 .container{
-width: 30%;
+width: 40%;
 margin-left: 5%;
 height: 95vh;
 }
 
 input[type='file']{
   border: none;
+}
+
+.container a{
+  font-size: 1.4rem;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 0 5px;
+  border: 1px #007BFF solid;
+  color: white;
+  transition: 0.2s;
+  background-color: #007BFF;
+  }
+
+  .container a:hover{
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  }
+
+.warn{
+color: red;
+}
+
+.apagar{
+background-color: black;
+}
+
+.apagar:hover{
+color: red;
+background-color: white;
 }

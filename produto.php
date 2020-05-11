@@ -31,9 +31,12 @@
           <span><?php echo 'R$ '.number_format($item['preco'], 2, ',', '.');?></span>
           <span><?php echo $item['descricao'];?></span>
         </article>
-        <?php endforeach;endif;?>
+        <?php endforeach;?>
        </div>
         <a id="add" href="upload.php">Adicionar produto</a>
+        <?php else:?>
+        <a id="add" href="upload.php">Adicione um produto</a>
+        <?php endif;?>
      </div>
   </body>
 </html>

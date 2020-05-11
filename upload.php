@@ -32,7 +32,6 @@ if($_POST or $_FILES){
       move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
       $foto = 'img/'.$foto['name'];
         add_pdt($pdt, $preco, $foto,$descricao);
-        header('location: produto.php');
     }
 }
  ?>
@@ -55,7 +54,7 @@ if($_POST or $_FILES){
         <?php echo ($pdtOK ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');?>
     <label for="descricao">Descrição do produto</label><br>
       <textarea name="descricao" value="<?php echo $descricao; ?>" rows="4" cols="40"></textarea><br>
-    <label for="preco">Preço do Produto</label><br>
+    <label for="preco">Preço do Produto (R$)</label><br>
       <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
         <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
     <label for="foto">Foto do produto</label><br>

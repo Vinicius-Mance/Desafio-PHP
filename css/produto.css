@@ -1,7 +1,11 @@
+.site{
+min-height: 100vh;
+}
 .container{
 width: 80%;
 padding: 35px;
-min-height: 75vh;
+height: auto;
+min-height: 20vh;
 border-radius: 10px;
 }
 

@@ -51,21 +51,7 @@ color: white;
 input,label,textarea{
 font-size: 1.5rem;
 width: 100%;
-}
-
-nav{
-width: 100%;
-height: 100%;
-flex-flow: row wrap;
-margin: 0 auto;
-display: flex;
-justify-content: space-around;
-list-style: none;
-align-items: center;
-}
-
-li {
-width: auto;
+font-family: 'Baloo Bhai 2', cursive;
 }
 
 input, textarea{

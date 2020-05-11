@@ -9,29 +9,31 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/produto.css">
     <meta charset="utf-8">
     <title>Function</title>
   </head>
   <body>
     <div class="site">
-    <?php include('includes/header.php');?>
-      <div class="container">
-        <?php
-        $produtos = fetch_pdt(); ?>
-        <?php if ($produtos): ?>
-        <?php foreach($produtos as $item):
+    <?php include('includes/header.php');
+        $produtos = fetch_pdt();
+          if ($produtos):?>
+          <div class="container">
+            <article id="label">
+              <span>Item</span>
+              <span>Preço</span>
+              <span>Descrição</span>
+            </article>
+          <?php foreach($produtos as $item):
           $_GET['id'] = $item['id'];?>
         <article>
-          <span> Produto: <?php echo $item['produto']; ?> </span>
-            <p> Preço: <?php echo $item['preco']; ?></p>
-            <span><?php echo $item['descricao']; ?></span>
-              <a href="item.php?id=<?php echo $_GET['id'];?>">Ver mais</a>
+          <span><a href="item.php?id=<?php echo $_GET['id'];?>"><?php echo $item['produto'];?></a></span>
+          <span><?php echo 'R$ '.number_format($item['preco'], 2, ',', '.');?></span>
+          <span><?php echo $item['descricao'];?></span>
         </article>
-        <?php endforeach;?>
-        <?php else: echo'<h1>Não há nenhum produto salvo.
-        <a href="upload.php">Coloque um aqui</a> </h1>';
-          endif;?>
+        <?php endforeach;endif;?>
        </div>
+        <a id="add" href="upload.php">Adicionar produto</a>
      </div>
   </body>
 </html>

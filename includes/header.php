@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css\header.css">
     <header>
     <nav>
         <li><a href="upload.php">Upload de produtos</a></li>

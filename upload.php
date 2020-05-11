@@ -47,23 +47,31 @@ if($_POST or $_FILES){
 <div class="site">
 <?php include('includes/header.php');?>
 <div class="container">
-  <form action="" method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>
       <input type="text" name="pdt" value="<?php echo $pdt; ?>"><br>
         <?php echo ($pdtOK ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');?>
     <label for="descricao">Descrição do produto</label><br>
-      <input type="text" name="descricao" value="<?php echo $descricao; ?>"><br>
+      <textarea name="descricao" value="<?php echo $descricao; ?>" rows="4" cols="40"></textarea><br>
     <label for="preco">Preço do Produto</label><br>
       <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
         <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
     <label for="foto">Foto</label><br>
-      <input type="file" name="foto"><br>
+      <input type="file" name="foto" id="foto"><br>
       <?php  echo ($fotoOK ? '' : '<span class="erro">Envie uma imagem</span>'.'<br>');?>
+    <img src="css/img/placeholder.png" id="foto-carregada">
     <button type="submit" name="button">Enviar</button>
     <button type="reset" name="button">Reset</button>
   </form>
-<a href="logout.php">Logout</a>
-<a href="produto.php">Visualisação de produtos</a>
+  <script>
+      document.getElementById("foto").onchange = (evt) => {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              document.getElementById("foto-carregada").src = e.target.result;
+          };
+          reader.readAsDataURL(evt.target.files[0]);
+      };
+  </script>
       </div>
     </div>
   </body>

@@ -28,6 +28,7 @@ if($_POST){
     if($nomeOk and $senhaOk and $emailOk){
         $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
         add_user($nome,$email,$encrypt_senha);
+        header('location: registrar.php');
     }
 } //fechamendo if ($_POST)
 ?>
@@ -35,13 +36,14 @@ if($_POST){
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registar.css">
     <meta charset="utf-8">
     <title>Registrar-se</title>
   </head>
   <body>
     <div class="site">
 <?php include('includes/header.php');?>
-      <div class="container">
+      <div class="registar">
         <form action="registrar.php" method="post">
         <label for="email">Digite seu email</label><br>
           <input type="email" name="email" value="<?php echo $email; ?>"><br>
@@ -57,13 +59,15 @@ if($_POST){
         <button type="submit" name="button">Enviar</button>
         </form>
         </div>
-        <div class="container">
+        <div class="user_info">
         <?php $usuario = fetch_user();
            foreach($usuario as $user):?>
-      		<article>
+      		<article class="user">
             <span> Usuário: <?php echo $user['nome'];?></span>
               <p> E-mail: <?php echo $user['email'];?></p>
-            <?php if (!is_numeric($user['user'])):?><?php else: ?>
+            <?php if (!is_numeric($user['user'])):?>
+            <a href="https://github.com/Vinicius-Mance">Administrador</a>
+            <?php else:?>123456
             <a href="delete.php?user=<?php echo $user['user'];?>">Apagar usuário</a>
             <?php endif; ?>
       		</article>

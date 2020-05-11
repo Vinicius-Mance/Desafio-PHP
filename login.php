@@ -24,22 +24,23 @@ $loginOk = true;
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
     <meta charset="utf-8">
     <title>Login</title>
   </head>
   <body>
     <div class="site">
-      <div class="container">
-        <form class="" method="post">
+      <div class="login">
+        <form method="post">
         <label for="email">Digite seu email</label><br>
           <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
         <label for="senha">Digite sua senha</label><br>
           <input type="password" name="senha" placeholder="senha123"><br>
         <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
         <button type="submit" name="button">Enviar</button><br>
+        <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
+        <a href="https://github.com/Vinicius-Mance" target="_blank">administrador</a></p>
         </form>
-        <p>Caso não seja registrado, ou não consegue logar, peça a um
-        <a href="https://github.com/Vinicius-Mance" target="_blank">Moderador</a></p>
        </div>
      </div>
   </body>

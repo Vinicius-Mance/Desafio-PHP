@@ -5,9 +5,9 @@
   margin: 0;
   padding: 0;
 }
+
 body {
-  background-color: black;
-  color: #ffffff;
+  color: black;
   font-family: 'Baloo Bhai 2', cursive;
   font-size: 20px;
   background-image: url(img/bg_uwu.jpeg);
@@ -16,34 +16,90 @@ body {
 }
 .site {
   width: 100%;
-  display: flex;
   min-height: 100vh;
-  flex-wrap: wrap;
-  border: solid 5px blue;
-  background-color: rgba(148, 0, 211, 0.7);
+  background-color: #8080ff;
+  display: flex;
+  flex-flow: row wrap;
 }
 .container {
-  width: calc(100% /4);
   border: 1px white solid;
   background-color: rgba(0, 0, 0, 0.7);
+  height: 90vh;
   padding: 5px;
-  height: auto;
-  margin: 0 auto;
+  margin: auto;
+  font-size: 1.6rem;
 }
 
 span{
   text-align: center;
 }
+
 .erro{
 color: red;
 }
+
 img{
-max-width: 100%;
+width: 100%;
 }
+
 a{
 color: white;
 text-decoration: none;
 }
-article{
-border-bottom: 1px white solid;
+
+header{
+font-size: 1.5rem;
+background-color: lightblue;
+width: 100%;
+height: 10vh;
+border-radius: 0 0 20px 20px;
+border: solid 1px black;
+}
+
+input{
+font-size: inherit;
+width: 100%;
+}
+
+nav{
+width: 100%;
+height: 100%;
+flex-flow: row wrap;
+margin: 0 auto;
+display: flex;
+justify-content: space-around;
+list-style: none;
+align-items: center;
+}
+
+li {
+width: auto;
+}
+
+input, textarea{
+border-radius: 10px;
+border: solid black 1px;
+padding: 5px;
+background-color: #rgba(255, 255, 255, 0.1);
+}
+
+input:focus,button:focus, textarea:focus{
+outline:none;
+}
+
+button{
+font-size: 1.2rem;
+margin: 5px 0;
+border-radius: 10px;
+padding: 5px;
+border: 1px #007BFF solid;
+color: white;
+transition: 0.2s;
+background-color: #007BFF;
+}
+
+button:hover{
+background-color: white;
+color: black;
+border: 1px solid black;
 }

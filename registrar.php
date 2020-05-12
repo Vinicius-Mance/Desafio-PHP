@@ -9,15 +9,26 @@ header('location: login.php');
     $nomeOk = true;
     $emailOk = true;
     $senhaOk = true;
+    $emailExiste = true;
+    $nomeExiste = true;
     $email = '';
     $nome = '';
+    $usuario = fetch_user();
 if($_POST){
-
+    //pega informações dos usuários registrados
     $email = $_POST['email'];
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
     $verify = $_POST['verify'];
     //verifica se um email foi digitado
+    foreach ($usuario as $info) {
+      if ($_POST['email'] == $info['email']) {
+        $emailExiste = false;
+      }
+      if ($_POST['nome'] == $info['nome']) {
+       $nomeExiste = false;
+      }
+    }
     if(empty($_POST['email'])){
     $emailOk = false;
     }
@@ -53,9 +64,11 @@ if($_POST){
           <label for="email">Digite um email</label><br>
             <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
             <?= ($emailOk ? '' : '<span class="erro">Email inválido</span>'.'<br>');  ?>
+            <?= ($emailExiste ? '' : '<span class="erro">Email já registrado</span>'.'<br>');  ?>
           <label for="nome">Digite um nome</label><br>
             <input type="text" name="nome" value="<?php echo $nome; ?>" placeholder="nome"><br>
-            <?= ($nomeOk ? '' : '<span class="erro">Preencha com um nome</span>'.'<br>');  ?>
+            <?= ($nomeOk ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');  ?>
+            <?= ($nomeExiste ? '' : '<span class="erro">Nome já cadastrado</span>'.'<br>');  ?>
           <label for="senha">Digite uma senha</label><br>
             <input type="password" name="senha" placeholder="senha123"><br>
           <label for="verify">Redigite a senha</label><br>
@@ -65,9 +78,7 @@ if($_POST){
         </form>
       </div>
         <div class="user_info container">
-        <?php $usuario = fetch_user();
-            //pega informações dos usuários registrados
-          foreach($usuario as $user):?>
+        <?php foreach($usuario as $user):?>
         		<article class="user">
               <span> Usuário: <?php echo $user['nome'];?></span>
                 <p> E-mail: <?php echo $user['email'];?></p>

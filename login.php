@@ -9,16 +9,16 @@
 
 $loginOk = true;
   $email= '';
-  //verifica se o usuário preencheu açgum dos campos
+  //verifica se o usuário preencheu algum dos campos
     if($_POST){
-        $email = $_POST['email'];
+        $login= $_POST['login'];
         $senha = $_POST['senha'];
         //verifica todos os usuários existentes
         $usuarios = fetch_user();
         foreach($usuarios as $user){
-          if($user['email'] == $email and $user['senha'] == password_verify($senha,$user['senha'])){
+          if( ($user['email'] or $user['nome']) == $login and $user['senha'] == password_verify($senha,$user['senha'])){
             // leva a página de usuários após login do usuário
-            $_SESSION['user'] = $user['user'];
+              $_SESSION['user'] = $user['user'];
               header('location: registrar.php');
           } else {$loginOk = false;}
       }
@@ -36,11 +36,11 @@ $loginOk = true;
     <div class="site">
       <div class="login">
         <form method="post">
-          <label for="email">Digite seu email</label><br>
-            <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
+          <label for="login">Digite seu email ou nome</label><br>
+            <input type="text" name="login" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
           <label for="senha">Digite sua senha</label><br>
             <input type="password" name="senha" placeholder="senha123"><br>
-          <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
+          <?= ($loginOk ? '' : '<span class="erro">Email, nome ou senha inválidos</span>'.'<br>');  ?>
           <button type="submit" name="button">Enviar</button><br>
           <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
           <a href="https://github.com/Vinicius-Mance" target="_blank">administrador</a></p>

@@ -1,5 +1,7 @@
 <?php
+//página para visualizar todos os produtos catalogados
  include('includes/functions.php');
+//verifica se o usuário está logado
  session_start();
  if (!$_SESSION) {
  header('location: login.php');
@@ -16,6 +18,7 @@
   <body>
     <div class="site">
     <?php include('includes/header.php');
+        //verifica se há algum produto no catálogo e imprime as informações
         $produtos = fetch_pdt();
           if ($produtos):?>
           <div class="container">

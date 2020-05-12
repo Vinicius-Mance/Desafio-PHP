@@ -1,5 +1,6 @@
 <?php
 include('includes/functions.php');
+//verifica se o usuário está logado
 session_start();
 if (!$_SESSION) {
 header('location: login.php');
@@ -12,24 +13,29 @@ header('location: login.php');
     $pdt = '';
     $descricao = '';
     $preco = '';
+//verifica se um dos campos foi preenchido
 if($_POST or $_FILES){
   $pdt = $_POST['pdt'];
   $descricao = $_POST['descricao'];
   $preco = $_POST['preco'];
   $foto = $_FILES['foto'];
+    //verifica se o nome foi preenchido
     if (empty($pdt)){
       $pdtOK = false;
     }
+    //verifica se o preço é valido (um número e maior que zero)
     if (empty($preco) or $preco < 0 and is_numeric($preco)){
       $precoOK = false;
     }
+    //verifica se uma imagem foi enviada
       if ($foto['error']==0){
         $valid=["image/jpeg","image/png","image/jpg"];
         if (array_search($foto['type'], $valid) === false ){exit;}
         } else {
       $fotoOK = false;}
+    //adiciona o produto no catálogo
     if ($pdtOK and $precoOK and $fotoOK){
-      move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
+        move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
       $foto = 'img/'.$foto['name'];
         add_pdt($pdt, $preco, $foto,$descricao);
         header('location: upload.php');
@@ -54,7 +60,7 @@ if($_POST or $_FILES){
       <input type="text" name="pdt" value="<?php echo $pdt; ?>"><br>
         <?php echo ($pdtOK ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');?>
     <label for="descricao">Descrição do produto</label><br>
-      <textarea name="descricao" value="<?php echo $descricao; ?>" rows="4" cols="40"></textarea><br>
+      <textarea name="descricao"><?php echo $descricao; ?></textarea><br>
     <label for="preco">Preço do Produto (R$)</label><br>
       <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
         <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
@@ -65,15 +71,15 @@ if($_POST or $_FILES){
     <button type="reset" name="button">Reset</button>
   </form>
       </div>
-      <div>
-  <script>
-      document.getElementById("foto-upload").onchange = (evt) => {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-          document.getElementById("foto-load").src = e.target.result;};
-          reader.readAsDataURL(evt.target.files[0]);};
-  </script>
-    <img src="css/img/placeholder.png" id="foto-load">
+         <div>
+            <script>
+                document.getElementById("foto-upload").onchange = (evt) => {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                    document.getElementById("foto-load").src = e.target.result;};
+                    reader.readAsDataURL(evt.target.files[0]);};
+            </script>
+          <img src="css/img/placeholder.png" id="foto-load">
         </div>
       </div>
     </div>

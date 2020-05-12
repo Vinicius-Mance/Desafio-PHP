@@ -1,30 +1,31 @@
+/* aparência do cabeçalho do site */
 header{
-font-size: 1.5rem;
-background-color: lightblue;
-width: 100%;
-height: 10vh;
+  font-size: 1.5rem;
+  background-color: lightblue;
+  width: 100%;
+  height: 10vh;
 }
 
 header a{
-color: white;
-font-size: inherit;
+  color: white;
+  font-size: inherit;
 }
 
 header a:hover{
-color: #007BFF;
+  color: #007BFF;
 }
 
 nav{
-width: 100%;
-height: 100%;
-flex-flow: row wrap;
-margin: 0 auto;
-display: flex;
-justify-content: space-around;
-list-style: none;
-align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  align-items: center;
 }
 
 li {
-width: auto;
+  width: auto;
 }

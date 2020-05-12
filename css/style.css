@@ -1,3 +1,4 @@
+/* css principal presente por todo site */
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhai+2&display=swap');
 
 * {
@@ -34,50 +35,49 @@ body {
 }
 
 .erro{
-color: red;
+  color: red;
 }
 
 a{
-color:#007BFF;
-text-decoration: none;
-transition: 0.2s;
+  color:#007BFF;
+  text-decoration: none;
+  transition: 0.2s;
 }
 
 a:hover{
-color: white;
+  color: white;
 }
 
-
 input,label,textarea{
-font-size: 1.5rem;
-width: 100%;
-font-family: 'Baloo Bhai 2', cursive;
+  font-size: 1.5rem;
+  width: 100%;
+  font-family: 'Baloo Bhai 2', cursive;
 }
 
 input, textarea{
-border-radius: 10px;
-border: solid black 1px;
-padding: 5px;
-background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  border: solid black 1px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 input:focus,button:focus, textarea:focus{
-outline:none;
+  outline:none;
 }
 
 button{
-font-size: 1.4rem;
-margin: 10px 0;
-border-radius: 10px;
-padding: 5px;
-border: 1px #007BFF solid;
-color: white;
-transition: 0.2s;
-background-color: #007BFF;
+  font-size: 1.4rem;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px #007BFF solid;
+  color: white;
+  transition: 0.2s;
+  background-color: #007BFF;
 }
 
 button:hover{
-background-color: white;
-color: black;
-border: 1px solid black;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }

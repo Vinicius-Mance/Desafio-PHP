@@ -1,5 +1,7 @@
 <?php
+    //página para login
     include("includes/functions.php");
+    //verifica se o usuário já está logado
     session_start();
     if ($_SESSION) {
     header('location: produto.php');
@@ -7,18 +9,20 @@
 
 $loginOk = true;
   $email= '';
+  //verifica se o usuário preencheu açgum dos campos
     if($_POST){
         $email = $_POST['email'];
         $senha = $_POST['senha'];
+        //verifica todos os usuários existentes
         $usuarios = fetch_user();
         foreach($usuarios as $user){
-        if($user['email'] == $email and $user['senha'] == password_verify($senha,$user['senha'])){
-          $_SESSION['email'] = $user['email'];
-          $_SESSION['nome'] = $user['nome'];
-          header('location: registrar.php');
-        } else {$loginOk = false;}
-    }
-}
+          if($user['email'] == $email and $user['senha'] == password_verify($senha,$user['senha'])){
+            // leva a página de usuários após login do usuário
+            $_SESSION['user'] = $user['user'];
+              header('location: registrar.php');
+          } else {$loginOk = false;}
+      }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,14 +36,14 @@ $loginOk = true;
     <div class="site">
       <div class="login">
         <form method="post">
-        <label for="email">Digite seu email</label><br>
-          <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
-        <label for="senha">Digite sua senha</label><br>
-          <input type="password" name="senha" placeholder="senha123"><br>
-        <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
-        <button type="submit" name="button">Enviar</button><br>
-        <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
-        <a href="https://github.com/Vinicius-Mance" target="_blank">administrador</a></p>
+          <label for="email">Digite seu email</label><br>
+            <input type="email" name="email" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
+          <label for="senha">Digite sua senha</label><br>
+            <input type="password" name="senha" placeholder="senha123"><br>
+          <?= ($loginOk ? '' : '<span class="erro">Email ou senha inválidos</span>'.'<br>');  ?>
+          <button type="submit" name="button">Enviar</button><br>
+          <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
+          <a href="https://github.com/Vinicius-Mance" target="_blank">administrador</a></p>
         </form>
        </div>
      </div>

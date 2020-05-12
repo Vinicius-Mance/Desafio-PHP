@@ -1,33 +1,35 @@
+/* aparência da página de visualização de produtos */
 .site{
-min-height: 100vh;
+  min-height: 100vh;
 }
+
 .container{
-width: 80%;
-padding: 35px;
-height: auto;
-min-height: 20vh;
-border-radius: 10px;
+  width: 80%;
+  padding: 35px;
+  height: auto;
+  min-height: 20vh;
+  border-radius: 10px;
 }
 
 .container article{
-display: flex;
-flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 #label{
-font-weight: bold;
+  font-weight: bold;
 }
 
 .container span{
-width: calc(100%/3);
+  width: calc(100%/3);
 }
 
 #add{
-text-align: center;
-font-size: 3rem;
-padding: 10px 20px;
-border-radius: 50px;
-margin: 20px auto;
-height: 6rem;
-background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 3rem;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin: 20px auto;
+  height: 6rem;
+  background-color: rgba(255, 255, 255, 0.5);
 }

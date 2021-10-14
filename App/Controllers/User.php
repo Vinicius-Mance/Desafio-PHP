@@ -41,7 +41,7 @@ class User extends Connect
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(":name", $name );
-            $stmt->bindValue(":user", 1);
+            $stmt->bindValue(":user", 0);
             $stmt->bindValue(":mail", $mail);
             $stmt->bindValue(":pass", $pass );
 
@@ -59,9 +59,11 @@ class User extends Connect
 
     public function delete($id) {
         $db = self::getInstance();
-        $sql = "DELETE * FROM usuarios WHERE id = $id";
+        $sql = "DELETE FROM usuarios WHERE id = :id";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(":id", $id );
+
+        $stmt->bindValue(":id", $id, FILTER_SANITIZE_NUMBER_INT);
+
         $stmt->execute();
     }
 

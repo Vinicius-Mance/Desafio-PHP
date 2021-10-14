@@ -1,5 +1,4 @@
 <?php
-include('includes/functions.php');
 //verifica se o usuário já está logado
 use App\Controllers\User;
 

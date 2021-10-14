@@ -1,8 +1,14 @@
 <?php
 include('includes/functions.php');
 //verifica se o usuário já está logado
-session_start();
+use App\Controllers\User;
 
+spl_autoload_register(function ($class_name) {
+  include $class_name . '.php';
+});
+
+session_start();
+    $user = new User();
     $nomeOk = true;
     $emailOk = true;
     $senhaOk = true;
@@ -10,7 +16,7 @@ session_start();
     $nomeExiste = true;
     $email = '';
     $nome = '';
-    $usuario = fetch_user();
+    $usuario = $user->read();
 if($_POST){
     //pega informações dos usuários registrados
     $email = $_POST['email'];
@@ -39,8 +45,8 @@ if($_POST){
     }
     //adiciona o usuário a lista de usuários
     if($nomeOk and $senhaOk and $emailOk){
-        $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
-        add_user($nome,$email,$encrypt_senha);
+        $encrypt_senha = password_hash($senha, PASSWORD_DEFAULT);
+        $user->register($nome,$email,$encrypt_senha);
         header('location: ./registrar.php');
     }
 }
@@ -79,8 +85,8 @@ if($_POST){
         		<article class="user">
               <span> Usuário: <?php echo $user['nome'];?></span>
                 <p> E-mail: <?php echo $user['email'];?></p>
-              <?php if (!is_numeric($user['user'])):?>
-                <a href="https://github.com/Vinicius-Mance" target="_blank">Administrador (contato)</a>
+              <?php if ($user['user']):?>
+                <a href="mailto:<?php echo $user['email']; ?> " target="_blank">Administrador (contato)</a>
               <?php else:?>
               <a href="delete.php?user=<?php echo $user['user'];?>">Apagar usuário</a>
               <?php endif; ?>

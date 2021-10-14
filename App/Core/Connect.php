@@ -15,9 +15,12 @@ class Connect {
         if (empty(self::$instance)){
             try {
                 self::$instance = new PDO(
-                    "mysql:host=twtraders.mysql.database.azure.com;dbname=fiap",
-                    "billygates@twtraders",
-                    "Wind@2021"
+                    // "mysql:host=twtraders.mysql.database.azure.com;dbname=fiap",
+                    // "billygates@twtraders",
+                    // "Wind@2021"
+                    "mysql:host=localhost:3306;dbname=fiap",
+                    "root",
+                    ""
                 );
             }catch ( PDOException $exception ){
                 die("<h1>Erro Ao Conectar</h1>" . $exception->getMessage());
@@ -26,5 +29,3 @@ class Connect {
         return self::$instance;
  }
 }
-
-

@@ -44,7 +44,7 @@ class Products extends Connect
       $stmt = $db->prepare($sql);
       $stmt->bindValue(":id",$id);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
 }

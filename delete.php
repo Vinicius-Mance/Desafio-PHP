@@ -22,6 +22,8 @@ $user = new User();
 //remoção de usuários
 if ($_GET['user']) {
       $user->delete($_GET['user']);
+      //retorna a página de usuários e cadastro
+
       header('location: ./registrar.php');
 }
     

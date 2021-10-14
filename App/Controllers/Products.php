@@ -40,9 +40,11 @@ class Products extends Connect
 
   public function selectPdt($id) {
       $db = self::getInstance();
-      $sql = "SELECT * FROM produtos WHERE id = $id";
-      $query = $db->query($sql)->fetch(PDO::FETCH_ASSOC);
-      return $query;
+      $sql = "SELECT * FROM produtos WHERE id = :id";
+      $stmt = $db->prepare($sql);
+      $stmt->bindValue(":id",$id);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
 }

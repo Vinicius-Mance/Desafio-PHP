@@ -44,8 +44,8 @@ if($_POST or $_FILES){
     //adiciona o produto no catálogo
     if ($pdtOK and $precoOK and $fotoOK){
         move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
-      $foto = 'img/'.$foto['name'];
-        echo $product->create($pdt, $preco, $foto,$descricao);
+        $foto = 'img/'.$foto['name'];
+        $product->create($pdt, $preco, $foto,$descricao);
         header('location: ./upload.php');
     }
 }

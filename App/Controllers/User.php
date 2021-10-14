@@ -61,6 +61,7 @@ class User extends Connect
         $db = self::getInstance();
         $sql = "DELETE * FROM usuarios WHERE id = $id";
         $stmt = $db->prepare($sql);
+        $stmt->bindValue(":id", $id );
         $stmt->execute();
     }
 

@@ -1,28 +1,24 @@
 <?php
-    //página para login
-    include("includes/functions.php");
-    //verifica se o usuário já está logado
-    session_start();
-    if ($_SESSION) {
-    header('location: ./produto.php');
-    }
 
-$loginOk = true;
+  use App\Controllers\User;
+
+  spl_autoload_register(function ($class_name) {
+    include $class_name . '.php';
+  });
+
+  $loginOk = true;
   $email= '';
-  //verifica se o usuário preencheu algum dos campos
-    if($_POST){
-        $login= $_POST['login'];
-        $senha = $_POST['senha'];
-        //verifica todos os usuários existentes
-        $usuarios = fetch_user();
-        foreach($usuarios as $user){
-          if( ($user['email'] or $user['nome']) == $login and $user['senha'] == password_verify($senha,$user['senha'])){
-            // leva a página de usuários após login do usuário
-              $_SESSION['user'] = $user['user'];
-              header('location: ./registrar.php');
-          } else {$loginOk = false;}
-      }
-  }
+
+  if($_POST) {
+    $user = new User();
+
+    $mail = filter_var($_POST['login'], FILTER_SANITIZE_STRIPPED);
+    $password = filter_var($_POST['senha'], FILTER_SANITIZE_STRIPPED);
+    
+    $user->login($mail, $password);
+  } 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

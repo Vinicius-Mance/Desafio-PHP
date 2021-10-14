@@ -2,9 +2,6 @@
 include('includes/functions.php');
 //verifica se o usuário já está logado
 session_start();
-if (!$_SESSION) {
-header('location: ./index.php');
-}
 
     $nomeOk = true;
     $emailOk = true;

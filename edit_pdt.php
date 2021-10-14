@@ -23,22 +23,7 @@
     if (empty($_POST['preco']) or $_POST['preco'] <= 0) {
       $preco = $produto['preco'];
     }
-    //verifica se uma nova foto foi selecionada para o produto
-    if ($foto['error']==0){
-      $valid=["image/jpeg","image/png","image/jpg"];
-      if (array_search($foto['type'], $valid) === false){
-      exit;}
-      else {
-      //retira a foto antiga
-        unlink($produto['foto']);
-      $foto = $_FILES['foto'];
-      //coloca a foto nova no lugar
-        move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
-      $foto = 'img/'.$foto['name'];
-      }
-    } else {
-      $foto = $produto['foto'];
-    }
+    
   //verifica se o produto existe no catálogo
   if ($produto) {
       $files = fetch_pdt();
@@ -80,8 +65,6 @@
       <textarea name="descricao"  value="<?php echo $produto['descricao']; ?>"><?php echo $produto['descricao']; ?></textarea>
     <label for="preco">Preço do Produto (R$)</label><br>
       <input type="number" name="preco" value="<?php echo $produto['preco'];?>"><br>
-    <label for="foto">Foto</label><br>
-      <input type="file" name="foto" id="img-upload" ><br>
     <button type="submit" name="button">Salvar alterações</button>
     <a href="item.php?id=<?php echo $produto['id'];?>">Voltar ao item</a>
   </form>

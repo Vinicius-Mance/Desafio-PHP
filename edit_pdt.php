@@ -4,7 +4,7 @@
   //verifica se o usuário está logado
   session_start();
   if (!$_SESSION) {
-  header('location: login.php');
+  header('location: ./index.php');
   }
   //informações a serem impressas na tela
   $produto = call_pdt($_GET['id']);

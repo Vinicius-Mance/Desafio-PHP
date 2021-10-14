@@ -3,7 +3,7 @@ include('includes/functions.php');
 //verifica se o usuário já está logado
 session_start();
 if (!$_SESSION) {
-header('location: login.php');
+header('location: ./index.php');
 }
 
     $nomeOk = true;
@@ -44,7 +44,7 @@ if($_POST){
     if($nomeOk and $senhaOk and $emailOk){
         $encrypt_senha= password_hash($senha, PASSWORD_DEFAULT);
         add_user($nome,$email,$encrypt_senha);
-        header('location: registrar.php');
+        header('location: ./registrar.php');
     }
 }
 ?>

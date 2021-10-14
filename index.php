@@ -4,7 +4,7 @@
     //verifica se o usuário já está logado
     session_start();
     if ($_SESSION) {
-    header('location: produto.php');
+    header('location: ./produto.php');
     }
 
 $loginOk = true;
@@ -19,7 +19,7 @@ $loginOk = true;
           if( ($user['email'] or $user['nome']) == $login and $user['senha'] == password_verify($senha,$user['senha'])){
             // leva a página de usuários após login do usuário
               $_SESSION['user'] = $user['user'];
-              header('location: registrar.php');
+              header('location: ./registrar.php');
           } else {$loginOk = false;}
       }
   }

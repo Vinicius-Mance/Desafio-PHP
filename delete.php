@@ -5,7 +5,7 @@ include('includes/functions.php');
 //caso o usuário não estiver logado, retorno a página de login
  session_start();
  if (!$_SESSION) {
- header('location: login.php');
+ header('location: ./index.php');
  }
 //apagar produto/item
 if ($_POST['delete']) {
@@ -29,10 +29,10 @@ if ($_POST['delete']) {
     }
   }
   //voltar automaticamente para a página de produtos após remoção do item
-  header('location: produto.php');
+  header('location: ./produto.php');
   } else {
   //volta ao item caso o nome não foi escrito corretamente
-  header('location: item.php?id='.$_GET['id']);
+  header('location: ./item.php?id='.$_GET['id']);
   }
 
 //remoção de usuários
@@ -52,7 +52,7 @@ if ($_GET['user']) {
       }
     }
     //retorna a página de usuários e cadastro
-    header('location: registrar.php');
+    header('location: ./registrar.php');
 }
  ?>
 </body>

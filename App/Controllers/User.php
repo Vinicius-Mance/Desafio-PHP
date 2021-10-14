@@ -59,9 +59,9 @@ class User extends Connect
 
     public function delete($id) {
         $db = self::getInstance();
-        $sql = "DELETE * FROM usuarios WHERE id = $id";
+        $sql = "DELETE * FROM usuarios WHERE id = :id";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(":id", $id );
+        $stmt->bindValue(":id",$id);
         $stmt->execute();
     }
 

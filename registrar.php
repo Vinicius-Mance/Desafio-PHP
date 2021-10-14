@@ -45,8 +45,8 @@ if($_POST){
     }
     //adiciona o usuário a lista de usuários
     if($nomeOk and $senhaOk and $emailOk){
-        $encrypt_senha = password_hash($senha, PASSWORD_DEFAULT);
-        $user->register($nome,$email,$encrypt_senha);
+        // $encrypt_senha = password_hash($senha, PASSWORD_DEFAULT);
+        $user->register($nome,$email,$senha);
         header('location: ./registrar.php');
     }
 }

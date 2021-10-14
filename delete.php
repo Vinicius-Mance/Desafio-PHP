@@ -46,7 +46,6 @@ if ($_POST['delete']) {
 if ($_GET['user']) {
       $user->delete($_GET['user']);
       //retorna a página de usuários e cadastro
-      die();
       header('location: ./registrar.php');
 
 }

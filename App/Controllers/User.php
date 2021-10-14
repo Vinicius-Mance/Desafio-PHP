@@ -41,7 +41,7 @@ class User extends Connect
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(":name", $name );
-            $stmt->bindValue(":user", false);
+            $stmt->bindValue(":user", 1);
             $stmt->bindValue(":mail", $mail);
             $stmt->bindValue(":pass", $pass );
 

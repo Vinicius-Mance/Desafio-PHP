@@ -56,4 +56,18 @@ class User extends Connect
                     echo "<script>alert('Falha, Login e/ou Senha errada')</script>";
             }
     }
+
+    public function delete($id) {
+        $db = self::getInstance();
+        $sql = "DELETE * FROM usuarios WHERE id = $id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function selectUser($id) {
+      $db = self::getInstance();
+      $sql = "SELECT * FROM usuarios WHERE id = $id";
+      $query = $db->query($sql)->fetch(PDO::FETCH_ASSOC);
+      return $query;
+    }
 }

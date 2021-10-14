@@ -1,6 +1,13 @@
 <?php
 //página feita para remoção de produtos e usuários
-// devido minha falta de conhecimento em php, criar um link para agir como botão foi a minha alternativa
+use App\Controllers\User;
+
+spl_autoload_register(function ($class_name) {
+  include $class_name . '.php';
+});
+
+$user = new User();
+
 include('includes/functions.php');
 //caso o usuário não estiver logado, retorno a página de login
  session_start();
@@ -37,23 +44,15 @@ if ($_POST['delete']) {
 
 //remoção de usuários
 if ($_GET['user']) {
-  $usuario = call_user($_GET['user']);
-  if ($usuario) {
-    $files = fetch_user();
-      //encontra o usuário em questão e apaga-o
-      foreach($files as $item => $info) {
-        if($info['user'] == $_GET['user']) {
-        unset($files[$item]);
-        array_values($files);
-        $data = json_encode($files);
-        file_put_contents('dados/user.json', $data);
-        break;
-        }
-      }
-    }
-    //retorna a página de usuários e cadastro
-    header('location: ./registrar.php');
+      $user->delete($_GET['user']);
+      //retorna a página de usuários e cadastro
+      die();
+      header('location: ./registrar.php');
+
 }
+
+
+
  ?>
 </body>
 </html>

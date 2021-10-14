@@ -88,7 +88,7 @@ if($_POST){
               <?php if ($user['user']):?>
                 <a href="mailto:<?php echo $user['email']; ?> " target="_blank">Administrador (contato)</a>
               <?php else:?>
-              <a href="delete.php?user=<?php echo $user['user'];?>">Apagar usuário</a>
+              <a href="delete.php?user=<?php echo $user['id'];?>">Apagar usuário</a>
               <?php endif; ?>
         		</article>
       		<?php endforeach;?>

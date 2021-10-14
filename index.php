@@ -6,6 +6,7 @@
     include $class_name . '.php';
   });
 
+  session_start();
   $loginOk = true;
   $email= '';
 
@@ -14,9 +15,9 @@
 
     $mail = filter_var($_POST['login'], FILTER_SANITIZE_STRIPPED);
     $password = filter_var($_POST['senha'], FILTER_SANITIZE_STRIPPED);
-    
+
     $user->login($mail, $password);
-  } 
+  }
 
 
 ?>

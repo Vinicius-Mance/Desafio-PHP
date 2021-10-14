@@ -1,6 +1,13 @@
 <?php
   //página para visualização de item individualmente
    include('includes/functions.php');
+
+   use App\Controllers\Products;
+
+   spl_autoload_register(function ($class_name) {
+     include $class_name . '.php';
+   });
+
    //verifica se o usuário está logado
    session_start();
    if (!$_SESSION) {
@@ -22,10 +29,11 @@
       <div class="container">
         <?php
         //busca informações a serem impressas na página
-        $produto = call_pdt($_GET['id']);
-        if ($produto): ?>
+        $product = new Products();
+        $produto = $product->selectPdt($_GET['id']);
+         ?>
         <article>
-            <span> Nome: <?php echo $produto['produto']; ?> </span><br>
+            <span> Nome: <?php echo $produto['nome']; ?> </span><br>
             <span> Preço: <?php echo 'R$: '.number_format($produto['preco'], 2, ',', '.'); ?></span><br>
             <span>Descrição: <?php echo $produto['descricao']; ?></span><br>
           <form action="delete.php?id=<?php echo $_GET['id'];?>" method="post">
@@ -35,9 +43,8 @@
             <a href="edit_pdt.php?id=<?php echo $_GET['id'];?>">Editar</a>
           </form>
         </article>
-        <?php endif;?>
        </div>
-            <img src="<?php echo $produto['foto'] ?>" alt="<?php echo $produto['produto']; ?>">
+            <img src="<?php echo $produto['foto'] ?>" alt="<?php echo $produto['nome']; ?>">
         </div>
      </div>
   </body>

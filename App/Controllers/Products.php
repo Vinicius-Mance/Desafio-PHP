@@ -15,22 +15,34 @@ class Products extends Connect
         return $query;
     }
 
-    public function create(string $mail,string $pass) {
-
+    public function create(string $name, string $preco, string $foto, string $descricao) {
         $db = self::getInstance();
-        $sql = "INSERT INTO produtos () VALUES ()";
+        $sql = "INSERT INTO produtos(nome, preco, foto, descricao) values (:name, :price, :photo, :descricao)";
+
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(":coluna", $variavel );
-        $stmt->bindValue(":coluna", $variavel );
+        $stmt->bindValue(":name", $name );
+        $stmt->bindValue(":price", $preco);
+        $stmt->bindValue(":photo", $foto);
+        $stmt->bindValue(":descricao", $descricao);
 
         $stmt->execute();
 
         if($stmt->rowCount() == 1){
-            
-            header("Location: registrar.php");
-        }else {
-                echo "<script>alert('Falha, cadastrar produto')</script>";
+            $dados = $stmt->fetch(PDO::FETCH_OBJ);
+            $_SESSION["logado"] = true;
+            $_SESSION["administrador"] = ['nome' => $dados->nome];
+            header("Location: produto.php");
+        } else {
+                echo "<script>alert('Falha, Login e/ou Senha errada')</script>";
         }
-    }
+  }
+
+  public function selectPdt($id) {
+      $db = self::getInstance();
+      $sql = "SELECT * FROM produtos WHERE id = $id";
+      $query = $db->query($sql)->fetch(PDO::FETCH_ASSOC);
+      return $query;
+  }
+
 }

@@ -1,9 +1,17 @@
 <?php
 include('includes/functions.php');
 //verifica se o usuário está logado
+use App\Controllers\Products;
+
+spl_autoload_register(function ($class_name) {
+  include $class_name . '.php';
+});
+
+$product = new Products();
+
 session_start();
 if (!$_SESSION) {
-header('location: ./index.php');
+  header('location: ./index.php');
 }
     $pdtOK = true;
     $precoOK = true;
@@ -37,7 +45,7 @@ if($_POST or $_FILES){
     if ($pdtOK and $precoOK and $fotoOK){
         move_uploaded_file($foto['tmp_name'], 'img/'.$foto['name']);
       $foto = 'img/'.$foto['name'];
-        add_pdt($pdt, $preco, $foto,$descricao);
+        echo $product->create($pdt, $preco, $foto,$descricao);
         header('location: ./upload.php');
     }
 }

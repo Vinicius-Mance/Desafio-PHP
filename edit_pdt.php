@@ -1,4 +1,13 @@
 <?php
+
+use App\Controllers\Products;
+
+spl_autoload_register(function ($class_name) {
+  include $class_name . '.php';
+});
+
+  $products = new Products();
+
   //pagina para editar informações de um produto
   include('includes/functions.php');
   //verifica se o usuário está logado
@@ -7,14 +16,14 @@
   header('location: ./index.php');
   }
   //informações a serem impressas na tela
-  $produto = call_pdt($_GET['id']);
+
+  $produto = $products->selectPdt($_GET['id']);
   foreach($produto as $pdt){}
   //verifica se há alterações
-  if ($_POST or $_FILES) {
+  if ($_POST) {
     $pdt = $_POST['pdt'];
     $preco = $_POST['preco'];
     $descricao = $_POST['descricao'];
-    $foto = $_FILES['foto'];
     //verifica se o nome não está vazio
     if (empty($_POST['pdt'])) {
         $pdt = $produto['produto'];
@@ -23,25 +32,11 @@
     if (empty($_POST['preco']) or $_POST['preco'] <= 0) {
       $preco = $produto['preco'];
     }
-    
+
   //verifica se o produto existe no catálogo
   if ($produto) {
-      $files = fetch_pdt();
       //procura o item em questão e troca suas informações
-      foreach($files as $item => $info) {
-        if($info['id'] == $_GET['id']) {
-          $new_info = ['produto'=>$pdt,'preco'=>$preco,'foto'=>$foto,'descricao'=>$descricao];
-          $new_file = array_replace($files[$item],$new_info);
-            unset($files[$item]);
-            array_values($new_file);
-          $files[]= $new_file;
-          $data = json_encode($files);
-            //coloca as novas informações no arquivo json
-            file_put_contents('dados/data.json', $data);
-            header("location: edit_pdt.php?id=".$_GET['id']);
-        break;
-        }
-      }
+      $products->updatePdt($_GET["id"],$pdt,$preco,$descricao);
     }
   }
 ?>
@@ -60,7 +55,7 @@
 <div class="container">
   <form method="post" enctype="multipart/form-data">
     <label for="pdt">Nome</label><br>
-      <input type="text" name="pdt" value="<?php echo $produto['produto'];?>"><br>
+      <input type="text" name="pdt" value="<?php echo $produto['nome'];?>"><br>
     <label for="descricao">Descrição do produto</label><br>
       <textarea name="descricao"  value="<?php echo $produto['descricao']; ?>"><?php echo $produto['descricao']; ?></textarea>
     <label for="preco">Preço do Produto (R$)</label><br>
@@ -68,16 +63,6 @@
     <button type="submit" name="button">Salvar alterações</button>
     <a href="item.php?id=<?php echo $produto['id'];?>">Voltar ao item</a>
   </form>
-      </div>
-          <script>
-              document.getElementById("img-upload").onchange = (evt) => {
-                  const reader = new FileReader();
-                  reader.onload = function (e) {
-                  document.getElementById("img-load").src = e.target.result;};
-                  reader.readAsDataURL(evt.target.files[0]);};
-          </script>
-        <img id="img-load" src="<?php echo $produto['foto'];?>" alt="">
-      </div>
     </div>
   </body>
 </html>

@@ -47,4 +47,26 @@ class Products extends Connect
       return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
+  public function updatePdt($id, string $name, string $preco, string $descricao) {
+      $db = self::getInstance();
+      $sql = "UPDATE produtos SET nome = :name, preco = :price, descricao = :descricao  WHERE id = :id";
+
+      $stmt = $db->prepare($sql);
+      $stmt->bindValue(":id", $id);
+      $stmt->bindValue(":name", $name );
+      $stmt->bindValue(":price", $preco);
+      $stmt->bindValue(":descricao", $descricao);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() == 1){
+          $dados = $stmt->fetch(PDO::FETCH_OBJ);
+          $_SESSION["logado"] = true;
+          $_SESSION["administrador"] = ['nome' => $dados->nome];
+          header("Location: produto.php");
+      } else {
+              echo "<script>alert('Falha, Login e/ou Senha errada')</script>";
+      }
+  }
+
 }

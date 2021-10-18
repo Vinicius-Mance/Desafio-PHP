@@ -1,5 +1,6 @@
 <?php
 // funções presentes usadas pelo site todo
+
   //retorna todos os usuários da página
   function fetch_user(){
       $data = file_get_contents("dados/user.json", true);

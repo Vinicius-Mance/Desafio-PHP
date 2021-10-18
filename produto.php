@@ -2,16 +2,9 @@
 //página para visualizar todos os produtos catalogados
  include('includes/functions.php');
 //verifica se o usuário está logado
-
-use App\Controllers\Products;
-
-spl_autoload_register(function ($class_name) {
-  include $class_name . '.php';
-});
-
  session_start();
  if (!$_SESSION) {
- header('location: ./index.php');
+ header('location: login.php');
  }
  ?>
 <!DOCTYPE html>
@@ -26,8 +19,7 @@ spl_autoload_register(function ($class_name) {
     <div class="site">
     <?php include('includes/header.php');
         //verifica se há algum produto no catálogo e imprime as informações
-        $products = new Products();
-        $produtos = $products->list();
+        $produtos = fetch_pdt();
           if ($produtos):?>
           <div class="container">
             <article id="label">
@@ -38,7 +30,7 @@ spl_autoload_register(function ($class_name) {
           <?php foreach($produtos as $item):
           $_GET['id'] = $item['id'];?>
         <article>
-          <span><a href="item.php?id=<?php echo $_GET['id'];?>"><?php echo $item['nome'];?></a></span>
+          <span><a href="item.php?id=<?php echo $_GET['id'];?>"><?php echo $item['produto'];?></a></span>
           <span><?php echo 'R$ '.number_format($item['preco'], 2, ',', '.');?></span>
           <span><?php echo $item['descricao'];?></span>
         </article>

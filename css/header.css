@@ -1,5 +1,4 @@
 /* aparência do cabeçalho do site */
-@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 header{
   font-size: 1.5rem;
   background-color: lightblue;
@@ -29,10 +28,4 @@ nav{
 
 li {
   width: auto;
-  color: white;
-}
-
-.logo {
-  font-family: 'Italianno', cursive;
-  font-size: 4rem;
 }

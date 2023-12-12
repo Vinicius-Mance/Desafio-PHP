@@ -4,7 +4,7 @@
     //verifica se o usuário já está logado
     session_start();
     if ($_SESSION) {
-    header('location: produto.php');
+    header('location: index.php');
     }
 
 $loginOk = true;
@@ -43,7 +43,7 @@ $loginOk = true;
           <?= ($loginOk ? '' : '<span class="erro">Email, nome ou senha inválidos</span>'.'<br>');  ?>
           <button type="submit" name="button">Enviar</button><br>
           <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
-          <a href="https://github.com/Vinicius-Mance" target="_blank">administrador</a></p>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinimanceprof@gmail.com" target="_blank">administrador</a></p>
         </form>
        </div>
      </div>

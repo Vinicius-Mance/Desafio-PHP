@@ -29,7 +29,7 @@ if ($_POST['delete']) {
     }
   }
   //voltar automaticamente para a página de produtos após remoção do item
-  header('location: produto.php');
+  header('location: index.php');
   } else {
   //volta ao item caso o nome não foi escrito corretamente
   header('location: item.php?id='.$_GET['id']);

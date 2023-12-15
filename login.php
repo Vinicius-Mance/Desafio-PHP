@@ -37,10 +37,10 @@ $loginOk = true;
       <div class="login">
         <form method="post">
           <label for="login">Digite seu email ou nome</label><br>
-            <input type="text" name="login" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
+            <input id="login" type="text" name="login" value="<?php echo $email; ?>" placeholder="nome@gmail.com"><br>
           <label for="senha">Digite sua senha</label><br>
-            <input type="password" name="senha" placeholder="senha123"><br>
-          <?= ($loginOk ? '' : '<span class="erro">Email, nome ou senha inválidos</span>'.'<br>');  ?>
+            <input id="senha" type="password" name="senha" placeholder="senha123"><br>
+          <?= ($loginOk ? '' : '<span id="loginErro" class="erro">Email, nome ou senha inválidos</span>'.'<br>');  ?>
           <button type="submit" name="button">Enviar</button><br>
           <p>Caso não seja registrado, ou não consegue logar, peça ajuda a um
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinimanceprof@gmail.com" target="_blank">administrador</a></p>

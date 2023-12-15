@@ -58,15 +58,15 @@ if($_POST or $_FILES){
   <form method="post" enctype="multipart/form-data">
     <label for="pdt">Nome do produto</label><br>
       <input type="text" name="pdt" value="<?php echo $pdt; ?>"><br>
-        <?php echo ($pdtOK ? '' : '<span class="erro">Coloque um nome</span>'.'<br>');?>
+        <?php echo ($pdtOK ? '' : '<span id="produtoNome" class="erro">Coloque um nome</span>'.'<br>');?>
     <label for="descricao">Descrição do produto</label><br>
       <textarea name="descricao"><?php echo $descricao; ?></textarea><br>
     <label for="preco">Preço do Produto (R$)</label><br>
       <input type="number" name="preco" value="<?php echo $preco; ?>"><br>
-        <?php  echo ($precoOK ? '' : '<span class="erro">Coloque um preço</span>'.'<br>');?>
+        <?php  echo ($precoOK ? '' : '<span id="produtoPreco" class="erro">Coloque um preço</span>'.'<br>');?>
     <label for="foto">Foto do produto</label><br>
       <input type="file" name="foto" id="foto-upload"><br>
-      <?php  echo ($fotoOK ? '' : '<span class="erro">Envie uma imagem</span>'.'<br>');?>
+      <?php  echo ($fotoOK ? '' : '<span id="produtoImagem" class="erro">Envie uma imagem</span>'.'<br>');?>
     <button type="submit" name="button">Enviar</button>
     <button type="reset" name="button">Reset</button>
   </form>

@@ -80,6 +80,10 @@ if($_POST){
         <div class="user_info container">
         <?php foreach($usuario as $user):?>
         		<article class="user">
+              <span>Bem Vindo(a)!</span>
+              <br>
+              <span>Lista de Usuários</span>
+              <br>
               <span> Usuário: <?php echo $user['nome'];?></span>
                 <p> E-mail: <?php echo $user['email'];?></p>
               <?php if (!is_numeric($user['user'])):?>
